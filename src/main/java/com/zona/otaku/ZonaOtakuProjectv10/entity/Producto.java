@@ -17,18 +17,24 @@ public class Producto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_productos")
     private Long idProductos;
+    
     @Column(name = "nombre_producto")
     private String nombreProducto;
+
     @Column(name = "precio_unitario")
     private double costoUnitario;
+
     @Column(name = "precio_producto")
     private double precioProducto;
+
     @Column(name = "cantidad")
     private int cantidad;
-    @ManyToOne
+
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_categoria")
     private Categoria categoria;
-    @ManyToOne
+
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_proveedor")
     private Proveedor proveedor;
 

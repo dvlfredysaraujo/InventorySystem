@@ -20,5 +20,7 @@ public class Proveedor {
     private String nombre;
     private String telefono;
     private String descripcion;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "proveedor", cascade = CascadeType.ALL)
+    private List<Producto> producto;
 
 }
