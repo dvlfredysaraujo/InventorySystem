@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/header::header(titulo='Proveedores')}">
+
+</head>
+<body>
+<!--Navbar-->
+<div th:replace="~{fragmentos/navbar::navbar}"/>
+
+<div class="container">
+    <h1 class="container text-center">Proveedores Zona Otaku</h1>
+</div>
+<div class="container mx-auto">
+    <a type="button" class="btn btn-success text-center" th:href="@{/addProveedor}">Agregar Proveedor</a>
+</div>
+<div class="container">
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NOMBRE</th>
+            <th scope="col">TELEFONO</th>
+            <th scope="col">DESCRIPCION</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="proveedor: ${proveedores}">
+            <td th:text="${proveedor.id}" scope="row"></td>
+            <td th:text="${proveedor.nombre}"></td>
+            <td th:text="${proveedor.telefono}"></td>
+            <td th:text="${proveedor.descripcion}"></td>
+            <td>
+                <div>
+                    <a th:href="@{/updateProveedor/{id}(id=${proveedor.id})}"
+                    class="btn btn-warning btn-sm me-3">Editar</a>
+                    <a th:href="@{/deleteProveedor/{id}(id=${proveedor.id})}"
+                       class="btn btn-danger btn-sm me-3">Eliminar</a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--Footer-->
+<div th:replace="~{fragmentos/footer::footer}"/>
+</body>
+</html>

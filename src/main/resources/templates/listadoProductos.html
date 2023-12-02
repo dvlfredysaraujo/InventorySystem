@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/header::header(titulo='Productos')}">
+
+</head>
+<body>
+<!--Navbar-->
+<div th:replace="~{fragmentos/navbar::navbar}"/>
+
+<div class="container">
+    <h1 class="container text-center">Productos Zona Otaku</h1>
+</div>
+<div class="container mx-auto">
+    <a type="button" class="btn btn-success text-center" th:href="@{/addProductos}">Agregar Producto</a>
+</div>
+<div class="container">
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NOMBRE</th>
+            <th scope="col">PRECIO</th>
+            <th scope="col">COSTO</th>
+            <th scope="col">CANTIDAD</th>
+            <th scope="col">CATEGORIA</th>
+            <th scope="col">PROVEEDOR</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="producto: ${productos}">
+            <td th:text="${producto.idProductos}" scope="row"></td>
+            <td th:text="${producto.nombreProducto}"></td>
+            <td th:text="${producto.precioProducto}"></td>
+            <td th:text="${producto.costoUnitario}"></td>
+            <td th:text="${producto.cantidad}"></td>
+            <td th:text="${producto.categoria.nombreCategoria}"></td>
+            <td th:text="${producto.proveedor.nombre}"></td>
+            <td>
+                <a th:href="@{/updateProducto/{id}(id=${producto.idProductos})}"
+                   class="btn btn-info btn-sm me-3">Editar</a>
+                <a th:href="@{/delete/{id}(id=${producto.idProductos})}" class="btn btn-danger btn-sm me-3">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--Footer-->
+<div th:replace="~{fragmentos/footer::footer}"/>
+</body>
+</html>

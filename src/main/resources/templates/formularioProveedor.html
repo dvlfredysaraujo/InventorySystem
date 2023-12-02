@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/header::header(titulo='Agregar Proveedor')}">
+
+</head>
+<body>
+<!--Navbar-->
+<div th:replace="~{fragmentos/navbar::navbar}"/>
+<div class="container">
+    <div class="container text-center">
+        <h2>Agregar Nuevo Proveedor</h2>
+    </div>
+</div>
+
+<div class="container">
+    <form action="/addProveedor" modelAttribute="proveedorFormulario" method="post">
+        <div class="form-group mb-3">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingresar nombre">
+        </div>
+        <div class="form-group mb-3">
+            <label for="telefono">Telefono</label>
+            <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Ingresar telefono">
+        </div>
+        <div class="form-group mb-3">
+            <label for="descripcion">Descripcion</label>
+            <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ingresar descripción">
+        </div>
+        <div class="text-center">
+            <div class="d-flex center-content-end">
+                <button type="submit" class="btn btn-warning btn-sm">Agregar</button>
+                <a href="/proveedores" class="btn btn-danger btn-sm">Regresar</a>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<!--Footer-->
+<div th:replace="~{fragmentos/footer::footer}">
+</body>
+</html>
