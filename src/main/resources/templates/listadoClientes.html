@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/header::header(titulo='Clientes')}">
+
+</head>
+<body>
+<!--Navbar-->
+<div th:replace="~{fragmentos/navbar::navbar}"/>
+
+<div class="container">
+    <h1 class="container text-center">Clientes Zona Otaku</h1>
+</div>
+<div class="container mx-auto">
+    <a type="button" class="btn btn-success text-center" th:href="@{/clientes/add}">Agregar Clientes</a>
+</div>
+<div class="container">
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NOMBRE</th>
+            <th scope="col">APELLIDO</th>
+            <th scope="col">TELEFONO</th>
+            <th scope="col">DIRECCION</th>
+            <th scope="col">FECHA</th>
+            <th scope="col">CANAL DE CONTACTO</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="cliente: ${clientes}">
+            <td scope="row"><a th:href="@{/clientes/data/{id}(id = ${cliente.idCliente})}" class="btn btn-info btn-sm me-3" th:text="${cliente.idCliente}"></a></td>
+            <td th:text="${cliente.nombreCliente}"></td>
+            <td th:text="${cliente.apellidoCliente}"></td>
+            <td th:text="${cliente.telefonoCliente}"></td>
+            <td th:text="${cliente.direccionCliente}"></td>
+            <td th:text="${cliente.creacionCliente}"></td>
+            <td th:text="${cliente.canalContacto}"></td>
+            <td>
+                <a th:href="@{/clientes/update/{id}(id = ${cliente.idCliente})}"
+                   class="btn btn-info btn-sm me-3">Editar</a>
+                <a th:href="@{/clientes/delete/{id}(id=${cliente.idCliente})}" class="btn btn-danger btn-sm me-3">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--Footer-->
+<div th:replace="~{fragmentos/footer::footer}"/>
+</body>
+</html>

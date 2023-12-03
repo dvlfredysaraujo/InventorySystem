@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/header::header(titulo='Editar Cliente')}">
+
+</head>
+<body>
+<!--Navbar-->
+<div th:replace="~{fragmentos/navbar::navbar}"/>
+<div class="container">
+    <div class="container text-center">
+        <h2>Editar Producto</h2>
+    </div>
+</div>
+
+<div class="container">
+    <form action="/clientes/update" th:object="${cliente}" method="post">
+        <input type="hidden" th:field="*{idCliente}"/>
+        <input type="hidden" th:field="*{creacionCliente}"/>
+        <div class="form-group mb-3">
+            <label for="nombreCliente">Nombre</label>
+            <input type="text" th:field="*{nombreCliente}" class="form-control" id="nombreCliente" name="nombreCliente" placeholder="Ingresar nombre del cliente">
+        </div>
+        <div class="form-group mb-3">
+            <label for="apellidoCliente">Apellido</label>
+            <input type="text" th:field="*{apellidoCliente}" class="form-control" id="apellidoCliente" name="apellidoCliente" placeholder="Ingresar Apellido del cliente">
+        </div>
+        <div class="form-group mb-3">
+            <label for="telefonoCliente">Telefono</label>
+            <input type="text" th:field="*{telefonoCliente}" class="form-control" id="telefonoCliente" name="telefonoCliente" placeholder="Ingresar telefono del cliente">
+        </div>
+        <div class="form-group mb-3">
+            <label for="direccionCliente">Direccion</label>
+            <input type="text" th:field="*{direccionCliente}" class="form-control" id="direccionCliente" name="direccionCliente" placeholder="Ingresar direccion del cliente">
+        </div>
+        <div class="form-group mb-3">
+            <label for="canalContacto">Canal de contacto</label>
+            <input type="text" th:field="*{canalContacto}" class="form-control" id="canalContacto" name="canalContacto" placeholder="Ingresar el canal en que se contacto el cliente">
+        </div>
+        <div class="text-center">
+            <div class="d-flex center-content-end">
+                <button type="submit" class="btn btn-warning btn-sm">Editar</button>
+                <a href="/clientes" class="btn btn-danger btn-sm">Regresar</a>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<!--Footer-->
+<div th:replace="~{fragmentos/footer::footer}"/>
+</body>
+</html>
