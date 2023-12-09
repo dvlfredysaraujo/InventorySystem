@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/header::header(titulo='Agregar Factura')}">
+
+</head>
+<body>
+<!--Navbar-->
+<div th:replace="~{fragmentos/navbar::navbar}"/>
+<div class="container">
+    <div class="container text-center">
+        <h2>Agregar Nueva Factura</h2>
+    </div>
+</div>
+
+<div class="container">
+    <form th:action="@{/factura/form/}" th:object="${factura}" method="post">
+        <input th:value="${factura.cliente.nombreCliente} + ' ' + ${factura.cliente.apellidoCliente}" disabled="disabled"/>
+        <input type="text" th:field="*{descripcionFactura}" class="form-control"/>
+        <textarea th:field="*{observacionFactura}" class="form-control"></textarea>
+
+        <div class="form-group row">
+            <label for="buscar_producto" class="col-sm-2 col-form-label" th:text="'Buscar Producto'"></label>
+            <div class="col-sm-6">
+                <input type="text" name="buscar_producto" id="buscar_producto" class="form-control"/>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <div class="d-flex center-content-end">
+                <input type="submit" value="Crear factura" />
+                <a th:href="@{/clientes/data/{id} (id = ${factura.cliente.idCliente})}" class="btn btn-danger btn-sm">Regresar</a>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<!--Footer-->
+<div th:replace="~{fragmentos/footer::footer}"/>
+<script th:replace="factura/js/autocomplete-productos :: javascript"></script>
+</body>
+</html>

@@ -24,6 +24,7 @@
             <th scope="col">DIRECCION</th>
             <th scope="col">FECHA</th>
             <th scope="col">CANAL DE CONTACTO</th>
+            <th scope="col">CREAR FACTURA</th>
             <th scope="col"></th>
         </tr>
         </thead>
@@ -36,6 +37,8 @@
             <td th:text="${cliente.direccionCliente}"></td>
             <td th:text="${cliente.creacionCliente}"></td>
             <td th:text="${cliente.canalContacto}"></td>
+            <td> <a th:href="@{/factura/form/{id}(id = ${cliente.idCliente})}"
+                   class="btn btn-info btn-sm me-3">Crear Factura</a></td>
             <td>
                 <a th:href="@{/clientes/update/{id}(id = ${cliente.idCliente})}"
                    class="btn btn-info btn-sm me-3">Editar</a>

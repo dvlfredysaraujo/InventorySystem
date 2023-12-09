@@ -21,6 +21,6 @@ public class Categoria {
     private String nombreCategoria;
     @Column(name = "descripcion_categoria")
     private String descripcionCategoria;
-    @OneToMany(fetch = FetchType.EAGER,mappedBy = "categoria",cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "categoria",cascade = CascadeType.ALL)
     private List<Producto> producto;
 }

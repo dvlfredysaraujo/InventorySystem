@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -47,8 +48,15 @@ public class Cliente {
     @Column(name = "canal_contacto")
     private String canalContacto;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente", cascade = CascadeType.ALL)
+    private List<Factura> facturas;
+
     @PrePersist
     public void prePersist(){
         creacionCliente = new Date();
+    }
+
+    public void addFacturas(Factura factura){
+        facturas.add(factura);
     }
 }

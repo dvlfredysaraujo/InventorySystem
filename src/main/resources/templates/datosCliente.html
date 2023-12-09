@@ -38,6 +38,27 @@
         </tr>
         </tbody>
     </table>
+
+    <div th:if="${#lists.isEmpty(cliente.facturas)}" class="alert alert-info my-4" th:text="'No hay facturas asignadas para el cliente ' + ${cliente.nombreCliente} + ' '+ ${cliente.apellidoCliente}"></div>
+
+    <table th:if="${not #lists.isEmpty(cliente.facturas)}" class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">FOLIO</th>
+            <th scope="col">DESCRIPCION</th>
+            <th scope="col">FECHA</th>
+            <th scope="col">TOTAL</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="factura: ${cliente.facturas}">
+            <td th:text="${factura.idFactura}" scope="row"></td>
+            <td th:text="${factura.descripcionFactura}"></td>
+            <td th:text="${factura.observacionFactura}"></td>
+            <td th:text="${factura.total}"></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 
 <!--Footer-->
